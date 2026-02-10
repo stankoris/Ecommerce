@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - E-Commerce Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a href="index.html" class="navbar-brand" style="color: white; text-decoration: none;">
+                    🛒 E-Commerce Store
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6" style="margin: 0 auto;">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Login</h2>
+                    </div>
+                    
+                    <div id="errorMessage" class="alert alert-danger d-none"></div>
+                    
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" class="form-control" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100" id="loginBtn">
+                            Login
+                        </button>
+                    </form>
+                    
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="register.html">Register here</a></p>
+                    </div>
+                    
+                    <div class="mt-3" style="background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
+                        <p style="margin: 0; font-size: 0.9rem;"><strong>Demo Accounts:</strong></p>
+                        <p style="margin: 5px 0; font-size: 0.85rem;">
+                            <strong>Admin:</strong> admin@ecommerce.com / admin123<br>
+                            <strong>Customer:</strong> john@example.com / customer123
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

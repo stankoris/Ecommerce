@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - E-Commerce Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a href="index.html" class="navbar-brand" style="color: white; text-decoration: none;">
+                    🛒 E-Commerce Store - Admin Panel
+                </a>
+                <div id="authButtons"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Tab Navigation -->
+        <div class="card mb-4">
+            <div class="card-body" style="padding: 15px;">
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-primary tab-btn active" onclick="showTab('products')">Products</button>
+                    <button class="btn btn-outline tab-btn" onclick="showTab('categories')">Categories</button>
+                    <button class="btn btn-outline tab-btn" onclick="showTab('orders')">Orders</button>
+                    <button class="btn btn-outline tab-btn" onclick="showTab('users')">Users</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Tab -->
+        <div id="productsTab" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3>Manage Products</h3>
+                        <button class="btn btn-success" onclick="showProductModal()">+ Add Product</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="productsTable"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Tab -->
+        <div id="categoriesTab" class="tab-content" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3>Manage Categories</h3>
+                        <button class="btn btn-success" onclick="showCategoryModal()">+ Add Category</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="categoriesTable"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div id="ordersTab" class="tab-content" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Manage Orders</h3>
+                </div>
+                <div class="card-body">
+                    <div id="ordersTable"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Tab -->
+        <div id="usersTab" class="tab-content" style="display: none;">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Manage Users</h3>
+                </div>
+                <div class="card-body">
+                    <div id="usersTable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProductModal()">&times;</span>
+            <h3 id="productModalTitle">Add Product</h3>
+            
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                
+                <div class="form-group">
+                    <label for="productName" class="form-label">Product Name *</label>
+                    <input type="text" id="productName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productDescription" class="form-label">Description</label>
+                    <textarea id="productDescription" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="productPrice" class="form-label">Price *</label>
+                            <input type="number" id="productPrice" class="form-control" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="productStock" class="form-label">Stock Quantity *</label>
+                            <input type="number" id="productStock" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productImage" class="form-label">Image URL</label>
+                    <input type="text" id="productImage" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="productCategory" class="form-label">Category</label>
+                    <select id="productCategory" class="form-control"></select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Category Modal -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeCategoryModal()">&times;</span>
+            <h3 id="categoryModalTitle">Add Category</h3>
+            
+            <form id="categoryForm">
+                <input type="hidden" id="categoryId">
+                
+                <div class="form-group">
+                    <label for="categoryName" class="form-label">Category Name *</label>
+                    <input type="text" id="categoryName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="categoryDescription" class="form-label">Description</label>
+                    <textarea id="categoryDescription" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">Save Category</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
