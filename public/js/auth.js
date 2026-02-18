@@ -68,8 +68,7 @@ function updateNavbar() {
         `;
     } else {
         authButtons.innerHTML = `
-            <a href="login.html" class="btn btn-outline-light btn-sm me-2">Login</a>
-            <a href="register.html" class="btn btn-light btn-sm">Register</a>
+            <a href="login.html" class="authBtn"><i class="fa-solid fa-circle-user"></i></a>
         `;
     }
     
@@ -138,4 +137,43 @@ function clearCart() {
 function getCartTotal() {
     const cart = getCart();
     return cart.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+}
+
+// Validate token with backend
+async function validateToken() {
+    const user = getCurrentUser();
+    
+    if (!user || !user.token) {
+        return false;
+    }
+    
+    try {
+        const response = await fetch('http://localhost:8080/api/auth/validate', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            return data.valid;
+        }
+        
+        return false;
+    } catch (error) {
+        console.error('Token validation error:', error);
+        return false;
+    }
+}
+
+// Optional: Auto-logout if token is invalid
+async function checkTokenValidity() {
+    if (isLoggedIn()) {
+        const isValid = await validateToken();
+        if (!isValid) {
+            console.log('Token expired or invalid');
+            logout();
+        }
+    }
 }

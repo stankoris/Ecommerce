@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce Store</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <!-- Navbar -->
@@ -12,14 +13,14 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center w-100">
                 <a href="index.html" class="navbar-brand" style="color: white; text-decoration: none;">
-                    🛒 E-Commerce Store
+                    <i class="fa-solid fa-globe"></i> E-Commerce Store
                 </a>
                 <div class="d-flex align-items-center">
+                    <div id="authButtons"></div>
                     <a href="#" onclick="showCart(); return false;" style="color: white; text-decoration: none; margin-right: 20px; position: relative;">
-                        🛒 Cart
+                        <span class="authBtn"><i class="fa-solid fa-cart-arrow-down"></i></span>
                         <span id="cartBadge" class="badge badge-danger" style="position: absolute; top: -8px; right: -10px; display: none;">0</span>
                     </a>
-                    <div id="authButtons"></div>
                 </div>
             </div>
         </div>
