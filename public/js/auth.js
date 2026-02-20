@@ -1,5 +1,3 @@
-// Authentication utility functions
-
 // Save user data to localStorage
 function saveUser(userData) {
     localStorage.setItem('user', JSON.stringify(userData));
@@ -64,7 +62,7 @@ function updateNavbar() {
             ${user.role === 'ADMIN' ? 
                 '<a href="admin.html" class="btn btn-warning btn-sm me-2">Admin Panel</a>' : 
                 ''}
-            <button class="btn btn-outline-light btn-sm" onclick="logout()">Logout</button>
+            <button class="btn btn-outline-light btn-sm" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
         `;
     } else {
         authButtons.innerHTML = `

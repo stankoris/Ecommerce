@@ -9,7 +9,6 @@
 
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center w-100">
@@ -21,12 +20,10 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="container mt-4">
         <h2 class="mb-4">Checkout</h2>
 
         <div class="row">
-            <!-- Shipping Information -->
             <div class="col-md-7">
                 <div class="card mb-4">
                     <div class="card-header">
@@ -87,7 +84,6 @@
                     </div>
                 </div>
 
-                <!-- Payment Method -->
                 <div class="card mb-4">
                     <div class="card-header">
                         <h3>Payment Method</h3>
@@ -98,24 +94,19 @@
                             <div style="display: flex; flex-direction: column; gap: 10px;">
                                 <label style="display: flex; align-items: center; padding: 15px; border: 2px solid #ddd; border-radius: 5px; cursor: pointer;">
                                     <input type="radio" name="paymentMethod" value="CREDIT_CARD" checked style="margin-right: 10px;">
-                                    <span>💳 Credit Card</span>
-                                </label>
-                                <label style="display: flex; align-items: center; padding: 15px; border: 2px solid #ddd; border-radius: 5px; cursor: pointer;">
-                                    <input type="radio" name="paymentMethod" value="DEBIT_CARD" style="margin-right: 10px;">
-                                    <span>💳 Debit Card</span>
+                                    <span><i class="fa-regular fa-credit-card"></i> Credit Card</span>
                                 </label>
                                 <label style="display: flex; align-items: center; padding: 15px; border: 2px solid #ddd; border-radius: 5px; cursor: pointer;">
                                     <input type="radio" name="paymentMethod" value="PAYPAL" style="margin-right: 10px;">
-                                    <span>🅿️ PayPal</span>
+                                    <span><i class="fa-brands fa-paypal"></i> PayPal</span>
                                 </label>
                                 <label style="display: flex; align-items: center; padding: 15px; border: 2px solid #ddd; border-radius: 5px; cursor: pointer;">
                                     <input type="radio" name="paymentMethod" value="CASH_ON_DELIVERY" style="margin-right: 10px;">
-                                    <span>💵 Cash on Delivery</span>
+                                    <span><i class="fa-solid fa-coins"></i> Cash on Delivery</span>
                                 </label>
                             </div>
                         </div>
 
-                        <!-- Card Details (shown only for card payments) -->
                         <div id="cardDetails" style="margin-top: 20px;">
                             <div class="form-group">
                                 <label for="cardNumber" class="form-label">Card Number</label>
@@ -135,15 +126,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="alert alert-info" style="font-size: 0.9rem; margin-top: 10px;">
-                                ℹ️ This is a simulated payment. No real transaction will occur.
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Order Summary -->
             <div class="col-md-5">
                 <div class="card" style="position: sticky; top: 20px;">
                     <div class="card-header">

@@ -93,12 +93,12 @@ function loadRelatedProducts() {
         return;
     }
     
-    // Filter products by same category, exclude current product
+    // Filter products
     const relatedProducts = allProducts.filter(p => 
         p.category && 
         p.category.id === currentProduct.category.id && 
         p.id !== currentProduct.id
-    ).slice(0, 4); // Show max 4 related products
+    ).slice(0, 4);
     
     const container = document.getElementById('relatedProducts');
     

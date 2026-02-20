@@ -17,40 +17,34 @@
                     <i class="fa-solid fa-globe"></i> E-Commerce Store
                 </a>
                 <div class="d-flex align-items-center">
-                    <a href="#" onclick="showCart(); return false;" style="color: white; text-decoration: none; margin-right: 20px; position: relative;">
-                        🛒 Cart
-                        <span id="cartBadge" class="badge badge-danger" style="position: absolute; top: -8px; right: -10px; display: none;">0</span>
-                    </a>
                     <div id="authButtons"></div>
+                    <a href="#" onclick="showCart(); return false;" style="color: white; text-decoration: none; margin-right: 20px; position: relative;">
+                        <span class="authBtn"><i class="fa-solid fa-cart-shopping"></i></span>
+                    </a>
+                    
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="container mt-4">
-        <!-- Back Button -->
         <div class="mb-3">
             <a href="index.html" class="btn btn-secondary">← Back to Products</a>
         </div>
 
-        <!-- Loading State -->
         <div id="loadingState" class="text-center">
             <div class="spinner"></div>
             <p>Loading product details...</p>
         </div>
 
-        <!-- Product Details -->
         <div id="productDetails" style="display: none;">
             <div class="row">
-                <!-- Product Image -->
                 <div class="col-md-6">
                     <div class="card">
                         <img id="productImage" src="" alt="Product" style="width: 100%; border-radius: 10px;">
                     </div>
                 </div>
 
-                <!-- Product Information -->
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
@@ -90,7 +84,7 @@
                             </div>
 
                             <div class="mt-4" style="padding: 15px; background-color: #e7f3ff; border-radius: 5px; border-left: 4px solid #667eea;">
-                                <h5 style="margin-bottom: 10px;">📦 Shipping Information</h5>
+                                <h5 style="margin-bottom: 10px;"><i class="fa-solid fa-truck-fast"></i> Shipping Information</h5>
                                 <p style="margin: 5px 0; font-size: 0.9rem;">✓ Free shipping on orders over $50</p>
                                 <p style="margin: 5px 0; font-size: 0.9rem;">✓ Estimated delivery: 3-5 business days</p>
                                 <p style="margin: 5px 0; font-size: 0.9rem;">✓ 30-day return policy</p>
@@ -100,14 +94,12 @@
                 </div>
             </div>
 
-            <!-- Related Products Section -->
             <div class="mt-5">
                 <h3 class="mb-4">Related Products</h3>
                 <div id="relatedProducts" class="row"></div>
             </div>
         </div>
 
-        <!-- Error State -->
         <div id="errorState" style="display: none;">
             <div class="alert alert-danger">
                 <h4>Product Not Found</h4>
@@ -117,7 +109,6 @@
         </div>
     </div>
 
-    <!-- Cart Modal -->
     <div id="cartModal" class="modal">
         <div class="modal-content" style="max-width: 800px;">
             <span class="modal-close" onclick="closeCart()">&times;</span>
