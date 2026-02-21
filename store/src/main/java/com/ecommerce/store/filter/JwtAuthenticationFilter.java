@@ -27,7 +27,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String email = null;
         String jwt = null;
 
-        // Extract JWT from Authorization header
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             try {
@@ -37,7 +36,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
-        // Validate token
         if (email != null && jwtUtil.validateToken(jwt)) {
             // Token is valid - you can add user to security context here if needed
             request.setAttribute("userId", jwtUtil.extractUserId(jwt));
