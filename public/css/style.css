@@ -111,14 +111,6 @@ body {
     color: white;
 }
 
-.btn-primary:hover,
-.btn-secondary:hover,
-.btn-outline:hover,
-.btn-success:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
-}
-
 .btn-secondary {
     background-color: #6c757d;
     color: white;
@@ -154,6 +146,40 @@ body {
     background: linear-gradient(135deg, #00f7ff 0%, #0011ff 100%);
     color: white;
     border-color: #667eea;
+}
+
+.backToTopbtn {
+    position: fixed;
+    bottom: 25px;
+    right: 60px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00f7ff 0%, #0011ff 100%);
+    color: white;
+    cursor: pointer;
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.backToTopbtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-outline:hover,
+.btn-success:hover,
+.backToTopbtn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
 }
 
 .form-group {
