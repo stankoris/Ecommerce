@@ -1,4 +1,3 @@
-// Check if already logged in
 if (isLoggedIn()) {
     const user = getCurrentUser();
     if (user.role === 'ADMIN') {
@@ -8,7 +7,6 @@ if (isLoggedIn()) {
     }
 }
 
-// Handle login form submission
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -17,10 +15,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const errorMessage = document.getElementById('errorMessage');
     const loginBtn = document.getElementById('loginBtn');
     
-    // Hide previous errors
     errorMessage.classList.add('d-none');
-    
-    // Disable button
+
     loginBtn.disabled = true;
     loginBtn.textContent = 'Logging in...';
     
@@ -36,17 +32,14 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         const data = await response.json();
         
         if (response.ok) {
-            // Save user data
             saveUser(data);
-            
-            // Redirect based on role
+
             if (data.role === 'ADMIN') {
                 window.location.href = 'admin.html';
             } else {
                 window.location.href = 'index.html';
             }
         } else {
-            // Show error message
             errorMessage.textContent = data.message || 'Invalid email or password';
             errorMessage.classList.remove('d-none');
             loginBtn.disabled = false;

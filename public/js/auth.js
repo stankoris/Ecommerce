@@ -1,33 +1,27 @@
-// Save user data to localStorage
 function saveUser(userData) {
     localStorage.setItem('user', JSON.stringify(userData));
 }
 
-// Get current user from localStorage
 function getCurrentUser() {
     const userStr = localStorage.getItem('user');
     return userStr ? JSON.parse(userStr) : null;
 }
 
-// Check if user is logged in
 function isLoggedIn() {
     return getCurrentUser() !== null;
 }
 
-// Check if current user is admin
 function isAdmin() {
     const user = getCurrentUser();
     return user && user.role === 'ADMIN';
 }
 
-// Logout user
 function logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('cart');
     window.location.href = 'index.html';
 }
 
-// Redirect to login if not authenticated
 function requireAuth() {
     if (!isLoggedIn()) {
         window.location.href = 'login.html';
@@ -36,7 +30,6 @@ function requireAuth() {
     return true;
 }
 
-// Redirect to login if not admin
 function requireAdmin() {
     if (!isAdmin()) {
         alert('Access denied. Admin privileges required.');
@@ -46,7 +39,6 @@ function requireAdmin() {
     return true;
 }
 
-// Update navbar based on authentication status
 function updateNavbar() {
     const user = getCurrentUser();
     const authButtons = document.getElementById('authButtons');
@@ -70,7 +62,6 @@ function updateNavbar() {
         `;
     }
     
-    // Update cart badge
     if (cartBadge) {
         const cart = getCart();
         const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -83,7 +74,6 @@ function updateNavbar() {
     }
 }
 
-// Cart functions
 function getCart() {
     const cartStr = localStorage.getItem('cart');
     return cartStr ? JSON.parse(cartStr) : [];
@@ -91,7 +81,7 @@ function getCart() {
 
 function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
-    updateNavbar(); // Update cart badge
+    updateNavbar();
 }
 
 function addToCart(product, quantity = 1) {
@@ -137,7 +127,6 @@ function getCartTotal() {
     return cart.reduce((total, item) => total + (item.product.price * item.quantity), 0);
 }
 
-// Validate token with backend
 async function validateToken() {
     const user = getCurrentUser();
     
@@ -165,7 +154,6 @@ async function validateToken() {
     }
 }
 
-// Optional: Auto-logout if token is invalid
 async function checkTokenValidity() {
     if (isLoggedIn()) {
         const isValid = await validateToken();

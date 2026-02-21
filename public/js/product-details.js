@@ -125,13 +125,11 @@ function loadRelatedProducts() {
     `).join('');
 }
 
-// Show error state
 function showError() {
     document.getElementById('loadingState').style.display = 'none';
     document.getElementById('errorState').style.display = 'block';
 }
 
-// Quantity controls
 function increaseQuantity() {
     const quantityInput = document.getElementById('quantity');
     const currentValue = parseInt(quantityInput.value);
@@ -151,7 +149,6 @@ function decreaseQuantity() {
     }
 }
 
-// Add to cart from details page
 function addToCartFromDetails() {
     const quantity = parseInt(document.getElementById('quantity').value);
     
@@ -173,11 +170,9 @@ function addToCartFromDetails() {
     addToCart(currentProduct, quantity);
     alert(`${quantity} x ${currentProduct.name} added to cart!`);
     
-    // Reset quantity to 1
     document.getElementById('quantity').value = 1;
 }
 
-// Buy now - add to cart and go to checkout
 function buyNow() {
     const quantity = parseInt(document.getElementById('quantity').value);
     
@@ -195,38 +190,31 @@ function buyNow() {
         alert(`Only ${currentProduct.stockQuantity} units available`);
         return;
     }
-    
-    // Add to cart
+
     addToCart(currentProduct, quantity);
-    
-    // Check if user is logged in
+
     if (!isLoggedIn()) {
         alert('Please login to proceed to checkout');
         window.location.href = 'login.html?redirect=checkout';
         return;
     }
-    
-    // Go to checkout
+
     window.location.href = 'checkout.html';
 }
 
-// Navigate to product details
 function goToProduct(productId) {
     window.location.href = `product-details.html?id=${productId}`;
 }
 
-// Show cart modal
 function showCart() {
     document.getElementById('cartModal').classList.add('show');
     renderCart();
 }
 
-// Close cart modal
 function closeCart() {
     document.getElementById('cartModal').classList.remove('show');
 }
 
-// Render cart items
 function renderCart() {
     const cart = getCart();
     const cartItems = document.getElementById('cartItems');
@@ -283,7 +271,6 @@ function renderCart() {
     document.getElementById('cartTotal').textContent = `$${getCartTotal().toFixed(2)}`;
 }
 
-// Proceed to checkout
 function proceedToCheckout() {
     if (!isLoggedIn()) {
         alert('Please login to proceed to checkout');

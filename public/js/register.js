@@ -1,9 +1,7 @@
-// Check if already logged in
 if (isLoggedIn()) {
     window.location.href = 'index.html';
 }
 
-// Handle registration form submission
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -22,12 +20,10 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const errorMessage = document.getElementById('errorMessage');
     const successMessage = document.getElementById('successMessage');
     const registerBtn = document.getElementById('registerBtn');
-    
-    // Hide previous messages
+  
     errorMessage.classList.add('d-none');
     successMessage.classList.add('d-none');
-    
-    // Disable button
+
     registerBtn.disabled = true;
     registerBtn.textContent = 'Creating account...';
     
@@ -43,19 +39,15 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         const data = await response.json();
         
         if (response.ok) {
-            // Show success message
             successMessage.textContent = 'Account created successfully! Redirecting to products...';
             successMessage.classList.remove('d-none');
-            
-            // Save user data
+
             saveUser(data);
-            
-            // Redirect after 2 seconds
+
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 2000);
         } else {
-            // Show error message
             errorMessage.textContent = data.message || 'Registration failed. Please try again.';
             errorMessage.classList.remove('d-none');
             registerBtn.disabled = false;

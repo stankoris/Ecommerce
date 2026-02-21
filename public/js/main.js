@@ -1,14 +1,12 @@
 let allProducts = [];
 let allCategories = [];
 
-// Initialize page
 document.addEventListener('DOMContentLoaded', () => {
     updateNavbar();
     loadCategories();
     loadProducts();
 });
 
-// Load all categories
 async function loadCategories() {
     try {
         const response = await fetch(API_ENDPOINTS.CATEGORIES);
@@ -16,7 +14,6 @@ async function loadCategories() {
         
         const categoryFilters = document.getElementById('categoryFilters');
         
-        // Add category buttons
         allCategories.forEach(category => {
             const button = document.createElement('button');
             button.className = 'btn btn-outline category-btn';
@@ -30,7 +27,6 @@ async function loadCategories() {
     }
 }
 
-// Load all products
 async function loadProducts() {
     try {
         const response = await fetch(API_ENDPOINTS.PRODUCTS);
@@ -46,7 +42,6 @@ async function loadProducts() {
     }
 }
 
-// Render products
 function renderProducts(products) {
     const container = document.getElementById('productsContainer');
     
@@ -89,14 +84,11 @@ function renderProducts(products) {
     `).join('');
 }
 
-// Add this new function to navigate to product details
 function goToProductDetails(productId) {
     window.location.href = `product-details.html?id=${productId}`;
 }
 
-// Filter products by category
 async function filterByCategory(categoryId) {
-    // Update active button
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.classList.remove('active');
     });
@@ -115,7 +107,6 @@ async function filterByCategory(categoryId) {
     }
 }
 
-// Search products
 async function searchProducts() {
     const keyword = document.getElementById('searchInput').value.trim();
     
@@ -133,7 +124,6 @@ async function searchProducts() {
     }
 }
 
-// Add product to cart
 function addProductToCart(productId) {
     const product = allProducts.find(p => p.id === productId);
     
@@ -151,18 +141,15 @@ function addProductToCart(productId) {
     alert(`${product.name} added to cart!`);
 }
 
-// Show cart modal
 function showCart() {
     document.getElementById('cartModal').classList.add('show');
     renderCart();
 }
 
-// Close cart modal
 function closeCart() {
     document.getElementById('cartModal').classList.remove('show');
 }
 
-// Render cart items
 function renderCart() {
     const cart = getCart();
     const cartItems = document.getElementById('cartItems');
@@ -219,7 +206,6 @@ function renderCart() {
     document.getElementById('cartTotal').textContent = `$${getCartTotal().toFixed(2)}`;
 }
 
-// Proceed to checkout
 function proceedToCheckout() {
     if (!isLoggedIn()) {
         alert('Please login to proceed to checkout');
@@ -230,7 +216,6 @@ function proceedToCheckout() {
     window.location.href = 'checkout.html';
 }
 
-// Allow Enter key to search
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {

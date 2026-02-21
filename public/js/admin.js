@@ -1,20 +1,15 @@
-// Check if user is admin
-if (!requireAdmin()) {
-    // Will redirect if not admin
-}
+if (!requireAdmin()) {}
 
 let allProducts = [];
 let allCategories = [];
 let allOrders = [];
 let allUsers = [];
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
     updateNavbar();
     loadAllData();
 });
 
-// Load all data
 async function loadAllData() {
     await loadProducts();
     await loadCategories();
@@ -22,31 +17,25 @@ async function loadAllData() {
     await loadUsers();
 }
 
-// Tab switching
 function showTab(tabName) {
-    // Hide all tabs
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.style.display = 'none';
     });
-    
-    // Remove active class from all buttons
+
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
         btn.classList.add('btn-outline');
         btn.classList.remove('btn-primary');
     });
     
-    // Show selected tab
     document.getElementById(tabName + 'Tab').style.display = 'block';
     
-    // Set active button
     event.target.classList.add('active');
     event.target.classList.remove('btn-outline');
     event.target.classList.add('btn-primary');
 }
 
-// ==================== PRODUCTS ====================
-
+// products
 async function loadProducts() {
     try {
         const response = await fetch(API_ENDPOINTS.PRODUCTS);
@@ -102,14 +91,12 @@ function showProductModal(productId = null) {
     const modal = document.getElementById('productModal');
     const form = document.getElementById('productForm');
     const title = document.getElementById('productModalTitle');
-    
-    // Load categories into dropdown
+ 
     const categorySelect = document.getElementById('productCategory');
     categorySelect.innerHTML = '<option value="">Select Category</option>' + 
         allCategories.map(cat => `<option value="${cat.id}">${cat.name}</option>`).join('');
     
     if (productId) {
-        // Edit mode
         const product = allProducts.find(p => p.id === productId);
         title.textContent = 'Edit Product';
         document.getElementById('productId').value = product.id;
@@ -120,7 +107,6 @@ function showProductModal(productId = null) {
         document.getElementById('productImage').value = product.imageUrl || '';
         document.getElementById('productCategory').value = product.category ? product.category.id : '';
     } else {
-        // Add mode
         title.textContent = 'Add Product';
         form.reset();
         document.getElementById('productId').value = '';
@@ -172,7 +158,6 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
     
     try {
         if (productId) {
-            // Update
             await fetch(API_ENDPOINTS.PRODUCT_BY_ID(productId), {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
@@ -180,7 +165,6 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
             });
             alert('Product updated successfully!');
         } else {
-            // Create
             await fetch(API_ENDPOINTS.PRODUCTS, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -197,8 +181,7 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
     }
 });
 
-// ==================== CATEGORIES ====================
-
+// categories
 async function loadCategories() {
     try {
         const response = await fetch(API_ENDPOINTS.CATEGORIES);
@@ -250,14 +233,12 @@ function showCategoryModal(categoryId = null) {
     const title = document.getElementById('categoryModalTitle');
     
     if (categoryId) {
-        // Edit mode
         const category = allCategories.find(c => c.id === categoryId);
         title.textContent = 'Edit Category';
         document.getElementById('categoryId').value = category.id;
         document.getElementById('categoryName').value = category.name;
         document.getElementById('categoryDescription').value = category.description || '';
     } else {
-        // Add mode
         title.textContent = 'Add Category';
         form.reset();
         document.getElementById('categoryId').value = '';
@@ -304,7 +285,6 @@ document.getElementById('categoryForm').addEventListener('submit', async (e) => 
     
     try {
         if (categoryId) {
-            // Update
             await fetch(API_ENDPOINTS.CATEGORY_BY_ID(categoryId), {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
@@ -312,7 +292,6 @@ document.getElementById('categoryForm').addEventListener('submit', async (e) => 
             });
             alert('Category updated successfully!');
         } else {
-            // Create
             await fetch(API_ENDPOINTS.CATEGORIES, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -323,15 +302,14 @@ document.getElementById('categoryForm').addEventListener('submit', async (e) => 
         
         closeCategoryModal();
         loadCategories();
-        loadProducts(); // Reload products to update category names
+        loadProducts();
     } catch (error) {
         console.error('Error saving category:', error);
         alert('Error saving category');
     }
 });
 
-// ==================== ORDERS ====================
-
+// orders
 async function loadOrders() {
     try {
         const response = await fetch(API_ENDPOINTS.ORDERS);
@@ -407,8 +385,7 @@ async function updateOrderStatus(orderId, status) {
     }
 }
 
-// ==================== USERS ====================
-
+// users
 async function loadUsers() {
     try {
         const response = await fetch(API_ENDPOINTS.USERS);
