@@ -69,13 +69,11 @@ public class OrderService {
             BigDecimal itemTotal = product.getPrice().multiply(new BigDecimal(itemRequest.getQuantity()));
             totalAmount = totalAmount.add(itemTotal);
 
-            // Update stock
             product.setStockQuantity(product.getStockQuantity() - itemRequest.getQuantity());
             productRepository.save(product);
 
-
             order.setPaymentMethod(orderRequest.getPaymentMethod());
-            order.setPaymentStatus("COMPLETED"); // Simulate successful payment
+            order.setPaymentStatus("COMPLETED");
         }
 
         order.setTotalAmount(totalAmount);

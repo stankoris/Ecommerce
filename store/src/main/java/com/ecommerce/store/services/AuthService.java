@@ -34,12 +34,10 @@ public class AuthService {
 
         User user = userOptional.get();
 
-        // Check password using BCrypt
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid password");
         }
 
-        // Generate JWT token
         String token = jwtUtil.generateToken(user.getId(), user.getEmail(), user.getRole());
 
         return new LoginResponse(
@@ -53,18 +51,15 @@ public class AuthService {
     }
 
     public LoginResponse register(RegisterRequest request) {
-        // Check if user already exists
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new RuntimeException("Email already registered");
         }
 
-        // Create new user
         User user = new User();
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setEmail(request.getEmail());
 
-        // Encrypt password using BCrypt
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         user.setPhone(request.getPhone());
@@ -76,7 +71,6 @@ public class AuthService {
 
         User savedUser = userRepository.save(user);
 
-        // Generate JWT token
         String token = jwtUtil.generateToken(savedUser.getId(), savedUser.getEmail(), savedUser.getRole());
 
         return new LoginResponse(
