@@ -43,7 +43,6 @@ public class AuthController {
         }
     }
 
-    // NEW: Validate token endpoint
     @GetMapping("/validate")
     public ResponseEntity<?> validateToken(@RequestHeader("Authorization") String authHeader) {
         try {
@@ -67,7 +66,6 @@ public class AuthController {
         }
     }
 
-    // Error response class
     static class ErrorResponse {
         private String message;
 
@@ -80,7 +78,6 @@ public class AuthController {
         }
     }
 
-    // Validation response class
     static class ValidationResponse {
         private boolean valid;
         private Long userId;
@@ -94,7 +91,6 @@ public class AuthController {
             this.role = role;
         }
 
-        // Getters
         public boolean isValid() { return valid; }
         public Long getUserId() { return userId; }
         public String getEmail() { return email; }
