@@ -42,11 +42,16 @@ function requireAdmin() {
 function updateNavbar() {
     const user = getCurrentUser();
     const authButtons = document.getElementById('authButtons');
-    const cartBadge = document.getElementById('cartBadge');
+    const cartBtn = document.querySelector('.cartBtn');
     
     if (!authButtons) return;
     
     if (user) {
+
+        if (cartBtn) {
+            cartBtn.style.display = user.role === 'ADMIN' ? 'none' : 'inline-block';
+        }
+        
         authButtons.innerHTML = `
             <span class="navbar-text me-3">
                 Welcome, ${user.firstName}!
@@ -57,20 +62,13 @@ function updateNavbar() {
             <button class="btn btn-outline-light btn-sm" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
         `;
     } else {
+
+        if (cartBtn) {
+            cartBtn.style.display = 'inline-block';
+        }
         authButtons.innerHTML = `
             <a href="login.html" class="authBtn"><i class="fa-solid fa-circle-user"></i></a>
         `;
-    }
-    
-    if (cartBadge) {
-        const cart = getCart();
-        const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-        if (itemCount > 0) {
-            cartBadge.textContent = itemCount;
-            cartBadge.style.display = 'inline';
-        } else {
-            cartBadge.style.display = 'none';
-        }
     }
 }
 
@@ -135,7 +133,7 @@ async function validateToken() {
     }
     
     try {
-        const response = await fetch('http://localhost:8080/api/auth/validate', {
+        const response = await fetch(API_ENDPOINTS.VALIDATE, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${user.token}`

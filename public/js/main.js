@@ -42,11 +42,12 @@ async function loadProducts() {
     }
 }
 
-
+function clearInput() {
+    document.getElementById('searchInput').value = "";
+}
 
 function renderProducts(products) {
     const container = document.getElementById('productsContainer');
-    
     if (products.length === 0) {
         container.innerHTML = `
             <div class="col-md-12">

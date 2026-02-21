@@ -17,7 +17,8 @@
                 <div class="d-flex align-items-center">
                     <div id="authButtons"></div>
                     <a href="#" onclick="showCart(); return false;" style="color: white; text-decoration: none; margin-right: 20px; position: relative;">
-                        <span class="authBtn"><i class="fa-solid fa-cart-shopping"></i></span>
+                        <span class="authBtn"></i></span>
+                        <span class="cartBtn"><i class="fa-solid fa-cart-shopping"></i></span>
                     </a>
                 </div>
             </div>
@@ -32,7 +33,7 @@
                         <div style="display: flex; gap: 10px;">
                             <input type="text" id="searchInput" class="form-control" placeholder="Search products..." style="flex: 1;">
                             <button class="btn btn-primary" onclick="searchProducts()">Search</button>
-                            <button class="btn btn-secondary" onclick="loadProducts()">Clear</button>
+                            <button class="btn btn-secondary" onclick="loadProducts(); clearInput();">Clear</button>
                         </div>
                     </div>
                 </div>

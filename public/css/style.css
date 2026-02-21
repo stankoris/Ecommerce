@@ -173,6 +173,10 @@ body {
     transform: translateY(0);
 }
 
+.cartBtn{
+    font-size: 24px;
+}
+
 .btn-primary:hover,
 .btn-secondary:hover,
 .btn-outline:hover,

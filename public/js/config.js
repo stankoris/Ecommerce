@@ -3,6 +3,8 @@ const API_BASE_URL = 'http://localhost:8080/api';
 const API_ENDPOINTS = {
     LOGIN: `${API_BASE_URL}/auth/login`,
     REGISTER: `${API_BASE_URL}/auth/register`,
+    VALIDATE: `${API_BASE_URL}/auth/validate`,
+
     
     PRODUCTS: `${API_BASE_URL}/products`,
     PRODUCT_BY_ID: (id) => `${API_BASE_URL}/products/${id}`,
