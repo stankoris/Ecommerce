@@ -57,9 +57,9 @@ function updateNavbar() {
                 Welcome, ${user.firstName}!
             </span>
             ${user.role === 'ADMIN' ? 
-                '<a href="admin.html" class="btn btn-warning btn-sm me-2">Admin Panel</a>' : 
+                '<a href="admin.html" class="btn btn-admin btn-sm me-2"><i class="fa-solid fa-house-user"></i></a>' : 
                 ''}
-            <button class="btn btn-outline-light btn-sm" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
+            <span class="btn btn-logout btn-sm me-2" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></span>
         `;
     } else {
 

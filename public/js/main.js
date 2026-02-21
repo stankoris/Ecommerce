@@ -139,9 +139,11 @@ function addProductToCart(productId) {
         alert('This product is out of stock');
         return;
     }
-    
+
+    product.stockQuantity --;
     addToCart(product, 1);
     alert(`${product.name} added to cart!`);
+    renderProducts(allProducts);
 }
 
 function showCart() {
