@@ -21,9 +21,9 @@ Full-stack e-commerce web aplikacija za online kupovinu proizvoda sa korisnički
 
 Projekat sadrži SQL skripte koje omogućavaju jednostavno kreiranje i inicijalizaciju baze podataka.
 
-Ecommerce_database_scheme.sql – skripta koja sadrži strukturu baze podataka i koristi se za kreiranje svih potrebnih tabela.
+## Ecommerce_database_scheme.sql – skripta koja sadrži strukturu baze podataka i koristi se za kreiranje svih potrebnih tabela.
 
-Ecommerce_data.sql – skripta koja sadrži inicijalne test podatke koji se mogu koristiti za demonstraciju funkcionalnosti aplikacije.
+## Ecommerce_data.sql – skripta koja sadrži inicijalne test podatke koji se mogu koristiti za demonstraciju funkcionalnosti aplikacije.
 
 U okviru test podataka definisana su dva korisnička naloga:
 
