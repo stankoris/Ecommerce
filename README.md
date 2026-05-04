@@ -32,8 +32,8 @@ Email: admin@ecommerce.com
 Password: admin123
 
  ## Korisnički nalog
-Email: testuser@gmail.com
-Password: test123
+Email: user@ecommerce.com
+Password: user123
 ## 
 Podaci za prijavu su takođe prikazani ispod login forme u aplikaciji radi lakšeg testiranja.
 Korisnici se mogu registrovati putem registracione forme, pri čemu je moguće kreirati samo standardni korisnički nalog, dok se administratorski nalog ne može registrovati putem aplikacije.
