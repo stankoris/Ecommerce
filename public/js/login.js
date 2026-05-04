@@ -1,12 +1,3 @@
-if (isLoggedIn()) {
-    const user = getCurrentUser();
-    if (user.role === 'ADMIN') {
-        window.location.href = 'admin.html';
-    } else {
-        window.location.href = 'index.html';
-    }
-}
-
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -14,8 +5,15 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('errorMessage');
     const loginBtn = document.getElementById('loginBtn');
-    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     errorMessage.classList.add('d-none');
+
+    if (!emailRegex.test(email)) {
+        errorMessage.textContent = 'Unesite validan email';
+        errorMessage.classList.remove('d-none');
+        return;
+    }
 
     loginBtn.disabled = true;
     loginBtn.textContent = 'Logging in...';
